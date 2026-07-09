@@ -1,0 +1,58 @@
+/* styles/app.css */
+:root {
+  /* AWS Enterprise Color Palette */
+  --bg-primary: #ffffff;
+  --bg-sidebar: #16191f;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #16191f;
+  --text-secondary: #545b64;
+  --accent-blue: #0073bb;
+  --border-color: #d5dbdb;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Sidebar Layout */
+.sidebar {
+  background-color: var(--bg-sidebar);
+  color: #ffffff;
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 1.5rem;
+}
+
+/* Main Content Wrapper */
+.main-content {
+  margin-left: 260px;
+  padding: 2rem;
+}
+
+/* Modern Card Component */
+.card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
