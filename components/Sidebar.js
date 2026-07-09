@@ -1,40 +1,64 @@
-// components/Sidebar.js
-import React from 'react';
-
-const Sidebar = ({ activeTab, setActiveTab }) => {
-  const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: 'LayoutDashboard' },
-    { id: 'my-labs', label: 'My Labs', icon: 'FlaskConical' },
-    { id: 'all-labs', label: 'All Labs', icon: 'Grid' },
-    { id: 'my-sessions', label: 'My Sessions', icon: 'Clock' },
-    { id: 'help', label: 'Help & Support', icon: 'HelpCircle' }
-  ];
-
+function Sidebar({ currentPage, setCurrentPage, activeLabName }) {
   return (
-    <nav className="sidebar">
-      <div className="sidebar-logo">
-        <span className="logo-icon">AWS</span>
-        <span className="logo-text">Lab Portal</span>
+    <aside className="sidebar">
+      <div>
+        {/* BRAND */}
+
+        <div className="brand">
+          <div className="brand-icon">
+            <div className="brand-core"></div>
+
+            <div className="brand-dot"></div>
+          </div>
+
+          <div>
+            <h1>AWS Lab Portal</h1>
+
+            <span>LEARN</span>
+          </div>
+        </div>
+
+        {/* NAVIGATION */}
+
+        <div className="nav-group">
+          <button
+            className={
+              currentPage === "launch" ? "nav-item active-nav" : "nav-item"
+            }
+            onClick={() => setCurrentPage("launch")}
+          >
+            Launch Lab
+          </button>
+
+          <button
+            className={
+              currentPage === "details" ? "nav-item active-nav" : "nav-item"
+            }
+            disabled={!activeLabName}
+            onClick={() => setCurrentPage("details")}
+          >
+            Current Lab
+          </button>
+        </div>
       </div>
 
-      <ul className="sidebar-menu">
-        {menuItems.map((item) => (
-          <li 
-            key={item.id} 
-            className={`menu-item ${activeTab === item.id ? 'active' : ''}`}
-            onClick={() => setActiveTab(item.id)}
-          >
-            {activeTab === item.id && <span className="active-dot"></span>}
-            <span className="menu-label">{item.label}</span>
-          </li>
-        ))}
-      </ul>
+      {/* FOOTER */}
 
       <div className="sidebar-footer">
-        <button className="help-button">Open Help</button>
-      </div>
-    </nav>
-  );
-};
+        <div className="profile">
+          <div className="avatar">{username()?.charAt(0)?.toUpperCase()}</div>
 
-export default Sidebar;
+          <div>
+            <div className="email">{username()}</div>
+
+            <div className="role">Learner</div>
+          </div>
+        </div>
+
+        <button className="logout-btn" onClick={logout}>
+          Logout
+        </button>
+      </div>
+    </aside>
+  );
+}
