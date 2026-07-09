@@ -1,4 +1,4 @@
-function Sidebar({ currentPage, setCurrentPage, activeLabName }) {
+function Sidebar({ currentPage, setCurrentPage }) {
   return (
     <aside className="sidebar">
       <div>
@@ -18,9 +18,11 @@ function Sidebar({ currentPage, setCurrentPage, activeLabName }) {
           </div>
         </div>
 
-        {/* NAVIGATION */}
+        {/* LAUNCH */}
 
         <div className="nav-group">
+          <div className="nav-label">PORTAL</div>
+
           <button
             className={
               currentPage === "launch" ? "nav-item active-nav" : "nav-item"
@@ -29,15 +31,44 @@ function Sidebar({ currentPage, setCurrentPage, activeLabName }) {
           >
             Launch Lab
           </button>
+        </div>
+
+        {/* LABS */}
+
+        <div className="nav-group">
+          <div className="nav-label">LABS</div>
 
           <button
             className={
-              currentPage === "details" ? "nav-item active-nav" : "nav-item"
+              currentPage === "iam-labs" ? "nav-item active-nav" : "nav-item"
             }
-            disabled={!activeLabName}
-            onClick={() => setCurrentPage("details")}
+            onClick={() => setCurrentPage("iam-labs")}
           >
-            Current Lab
+            IAM Labs
+          </button>
+
+          <button className="nav-item" disabled>
+            S3 Labs
+          </button>
+
+          <button className="nav-item" disabled>
+            Lambda Labs
+          </button>
+
+          <button className="nav-item" disabled>
+            EC2 Labs
+          </button>
+
+          <button className="nav-item" disabled>
+            DynamoDB Labs
+          </button>
+
+          <button className="nav-item" disabled>
+            Networking Labs
+          </button>
+
+          <button className="nav-item" disabled>
+            RDS Labs
           </button>
         </div>
       </div>
