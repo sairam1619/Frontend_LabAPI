@@ -1,8 +1,6 @@
-import { labData } from "./LabData";
-
 function LabDetailsPage({ type }) {
 
-  const category = labData[type];
+  const category = window.labData[type];
   const labs = category?.labs || [];
   const [search, setSearch] = React.useState("");
   const [selectedLab, setSelectedLab] = React.useState(labs[0]);
