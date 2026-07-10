@@ -58,52 +58,59 @@
 }
 
 /* ==========================================================
-   LAB SELECTOR
+   LAB ACCORDION
 ========================================================== */
 
-.labs-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 34px;
+.labs-accordion{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    margin-bottom:34px;
 }
 
-.labs-card {
-  min-width: 210px;
-  background: white;
-  border: 1px solid #dbe4f0;
-  border-radius: 16px;
-  padding: 18px 20px;
-  cursor: pointer;
-  transition: 0.25s ease;
+.labs-accordion-item{
+    border:1px solid #dbe4f0;
+    border-radius:18px;
+    background:#fff;
+    overflow:hidden;
+    transition:.25s ease;
 }
 
-.labs-card:hover {
-  border-color: #172554;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+.labs-accordion-item:hover{
+    box-shadow:0 10px 24px rgba(15,23,42,.08);
 }
 
-.labs-card-active {
-  background: #172554;
-  color: white;
-  border-color: #172554;
-  box-shadow: 0 14px 30px rgba(23, 37, 84, 0.22);
+.labs-accordion-header{
+    width:100%;
+    border:none;
+    background:#fff;
+    padding:22px 26px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    text-align:left;
 }
 
-.labs-card-title {
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 6px;
+.labs-accordion-header:hover{
+    background:#f8fafc;
 }
 
-.labs-card-subtitle {
-  font-size: 13px;
-  color: #64748b;
+.labs-accordion-body{
+    padding:32px;
+    border-top:1px solid #e2e8f0;
 }
 
-.labs-card-active .labs-card-subtitle {
-  color: rgba(255, 255, 255, 0.75);
+.labs-card-title{
+    font-size:17px;
+    font-weight:700;
+    margin-bottom:6px;
+    color:#172554;
+}
+
+.labs-card-subtitle{
+    font-size:13px;
+    color:#64748b;
 }
 
 /* ==========================================================

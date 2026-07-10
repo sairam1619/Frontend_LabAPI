@@ -583,137 +583,168 @@ function LabDetailsPage() {
         />
       </div>
 
-      <div className="labs-grid">
-        {filteredLabs.map((lab) => (
-          <div
-            key={lab.id}
-            className={
-              selectedLab.id === lab.id
-                ? "labs-card labs-card-active"
-                : "labs-card"
-            }
-            onClick={() => {
+      <div className="labs-accordion">
+  {filteredLabs.map((lab) => {
+    const expanded = selectedLab.id === lab.id;
+
+    return (
+      <div key={lab.id} className="labs-accordion-item">
+        <button
+          className="labs-accordion-header"
+          onClick={() => {
+            if (expanded) {
+              setSelectedLab({ id: -1 });
+            } else {
               setSelectedLab(lab);
               setExpandedSection(null);
-            }}
-          >
+            }
+          }}
+        >
+          <div>
             <div className="labs-card-title">{lab.name}</div>
-
             <div className="labs-card-subtitle">{lab.subtitle}</div>
           </div>
+
+          <i
+            className={
+              expanded
+                ? "bi bi-chevron-up"
+                : "bi bi-chevron-down"
+            }
+          ></i>
+        </button>
+
+        {expanded && (
+  <div className="labs-accordion-body">
+
+    <div className="labs-details-header">
+      <h3>{lab.name}</h3>
+      <p>{lab.subtitle}</p>
+    </div>
+
+    <div className="labs-section">
+      <h4>Overview</h4>
+      <p>{lab.overview}</p>
+    </div>
+
+    <div className="labs-section">
+      <h4>Learning Objectives</h4>
+
+      <ul className="labs-list">
+        {lab.objectives.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
+
+    <div className="labs-section">
+      <h4>AWS Services</h4>
+
+      <div className="labs-service-tags">
+        {lab.services.map((service, index) => (
+          <span key={index} className="labs-service-tag">
+            {service}
+          </span>
         ))}
       </div>
+    </div>
 
-      <div className="labs-details">
-        <div className="labs-details-header">
-          <h3>{selectedLab.name}</h3>
+    <div className="labs-section">
+      <h4>Lab Sections</h4>
 
-          <p>{selectedLab.subtitle}</p>
-        </div>
+      <div className="labs-section-list">
+        {lab.sections.map((section, index) => {
+          const expandedSectionItem = expandedSection === index;
 
-        <div className="labs-section">
-          <h4>Overview</h4>
+          return (
+            <div
+              key={index}
+              className={
+                expandedSectionItem
+                  ? "labs-section-item expanded"
+                  : "labs-section-item"
+              }
+            >
+              <button
+                className="labs-section-header"
+                onClick={() =>
+                  setExpandedSection(
+                    expandedSectionItem ? null : index
+                  )
+                }
+              >
+                <div className="labs-section-left">
+                  <span className="labs-section-number">
+                    {index + 1}
+                  </span>
 
-          <p>{selectedLab.overview}</p>
-        </div>
-
-        <div className="labs-section">
-          <h4>Learning Objectives</h4>
-
-          <ul className="labs-list">
-            {selectedLab.objectives.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="labs-section">
-          <h4>AWS Services</h4>
-
-          <div className="labs-service-tags">
-            {selectedLab.services.map((service, index) => (
-              <span key={index} className="labs-service-tag">
-                {service}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className="labs-section">
-          <h4>Lab Sections</h4>
-
-          <div className="labs-section-list">
-            {selectedLab.sections.map((section, index) => {
-              const expanded = expandedSection === index;
-
-              return (
-                <div
-                  key={index}
-                  className={
-                    expanded
-                      ? "labs-section-item expanded"
-                      : "labs-section-item"
-                  }
-                >
-                  <button
-                    className="labs-section-header"
-                    onClick={() => setExpandedSection(expanded ? null : index)}
-                  >
-                    <div className="labs-section-left">
-                      <span className="labs-section-number">{index + 1}</span>
-
-                      <span className="labs-section-title">
-                        {section.title}
-                      </span>
-                    </div>
-
-                    <i
-                      className={
-                        expanded
-                          ? "bi bi-chevron-up nav-arrow"
-                          : "bi bi-chevron-down nav-arrow"
-                      }
-                    />
-                  </button>
-
-                  {expanded && (
-                    <div className="labs-section-content">
-                      <h5>Objective</h5>
-                      <p>{section.objective}</p>
-
-                      <h5>Tasks</h5>
-
-                      <ul className="labs-list">
-                        {section.tasks.map((task, taskIndex) => (
-                          <li key={taskIndex}>{task}</li>
-                        ))}
-                      </ul>
-
-                      <h5>Outcome</h5>
-                      <p>{section.outcome}</p>
-                    </div>
-                  )}
+                  <span className="labs-section-title">
+                    {section.title}
+                  </span>
                 </div>
-              );
-            })}
-          </div>
-        </div>
 
-        <div className="labs-section">
-          <h4>Common Issues</h4>
+                <i
+                  className={
+                    expandedSectionItem
+                      ? "bi bi-chevron-up nav-arrow"
+                      : "bi bi-chevron-down nav-arrow"
+                  }
+                />
+              </button>
 
-          <ul className="labs-list">
-            {selectedLab.issues.map((issue, index) => (
-              <li key={index}>{issue}</li>
-            ))}
-          </ul>
-        </div>
+              {expandedSectionItem && (
+                <div className="labs-section-content">
+                  <h5>Objective</h5>
 
-        <div className="labs-actions">
-          <button className="labs-doc-btn">Documentation</button>
+                  <p>{section.objective}</p>
 
-          <button className="labs-launch-btn">Launch Lab</button>
-        </div>
+                  <h5>Tasks</h5>
+
+                  <ul className="labs-list">
+                    {section.tasks.map((task, taskIndex) => (
+                      <li key={taskIndex}>{task}</li>
+                    ))}
+                  </ul>
+
+                  <h5>Outcome</h5>
+
+                  <p>{section.outcome}</p>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
+    </div>
+
+    <div className="labs-section">
+      <h4>Common Issues</h4>
+
+      <ul className="labs-list">
+        {lab.issues.map((issue, index) => (
+          <li key={index}>{issue}</li>
+        ))}
+      </ul>
+    </div>
+
+    <div className="labs-actions">
+      <button className="labs-doc-btn">
+        Documentation
+      </button>
+
+      <button className="labs-launch-btn">
+        Launch Lab
+      </button>
+    </div>
+
+  </div>
+)}
+      </div>
+    );
+  })}
+</div>
+
+     
     </div>
   );
 }
