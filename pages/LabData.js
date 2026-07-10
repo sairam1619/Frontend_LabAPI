@@ -1,4 +1,4 @@
-export const labData = {
+window.labData = {
   iam: {
     title: "IAM Labs",
 
@@ -9,8 +9,8 @@ export const labData = {
 
     labs: [
       {
-        id: 1,
-        name: "IAM Users, Groups, and Policies",
+      id: 1,
+      name: "IAM Users, Groups, and Policies",
       subtitle: "Secure S3 Access with IAM",
       overview:
         "Learn how to implement secure access control using AWS Identity and Access Management (IAM) for an Amazon S3 bucket. Create an S3 bucket, configure an IAM group with a custom read-only policy, add an IAM user to the group, generate AWS CLI access keys, and verify permissions by performing allowed and restricted S3 operations.",
@@ -90,7 +90,6 @@ export const labData = {
         "AWS CLI configured with invalid or incorrect access credentials.",
       ],
     },
-
     {
       id: 2,
       name: "IAM Roles for EC2 - Secure Access to DynamoDB Without Access Keys",
@@ -172,7 +171,6 @@ export const labData = {
         "AWS CLI commands fail because the IAM role or instance metadata is not configured correctly.",
       ],
     },
-
     {
       id: 3,
       name: "Restrict IAM Users from Accessing RDS Unless Connecting from a Specific IP",
@@ -255,7 +253,6 @@ export const labData = {
         "AWS CLI authentication fails because of invalid or incorrectly configured access keys.",
       ],
     },
-
     {
       id: 4,
       name: "Implementing Multi-Factor Authentication (MFA) for Enhanced IAM Security",
@@ -346,7 +343,6 @@ export const labData = {
         "IAM policies are incorrectly attached or do not enforce MFA conditions.",
       ],
     },
-
     {
       id: 5,
       name: "Implementing Temporary S3 Access with AWS STS AssumeRole",
@@ -558,31 +554,8 @@ export const labData = {
         "Region restriction policy misconfigured",
         "Access keys configured incorrectly",
         "Access denied outside allowed region",
-      ],
-    ],
-  },
-
-  s3: {
-    title: "S3 Labs",
-
-    description:
-      "Learn Amazon S3 storage, security, lifecycle management, replication, backup and website hosting through hands-on labs.",
-
-    searchPlaceholder: "Search S3 labs...",
-
-    labs: [
-      // S3 labs
-    ],
-  },
-
-  lambda: {
-    title: "Lambda Labs",
-
-    description:
-      "Learn AWS Lambda and serverless application development through practical labs.",
-
-    searchPlaceholder: "Search Lambda labs...",
-
-    labs: [],
-  },
+      ]
+    }
+  ]
+  }
 };
