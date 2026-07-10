@@ -10,5 +10,18 @@ const SERVICE_ICONS = {
 
 const PAGE = {
   LAUNCH: "launch",
-  DETAILS: "details",
+
+  IAM_LABS: "iam-labs",
+
+  S3_LABS: "s3-labs",
+
+  LAMBDA_LABS: "lambda-labs",
+
+  EC2_LABS: "ec2-labs",
+
+  DYNAMODB_LABS: "dynamodb-labs",
+
+  NETWORKING_LABS: "networking-labs",
+
+  RDS_LABS: "rds-labs",
 };

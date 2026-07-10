@@ -277,9 +277,17 @@ function App() {
         <main className="page-content">
           {currentPage === PAGE.LAUNCH && <LaunchLabPage appState={appState} />}
 
-          {currentPage === PAGE.DETAILS && (
-            <LabDetailsPage appState={appState} />
+          {currentPage === PAGE.IAM_LABS && <LabDetailsPage type="iam" />}
+          {currentPage === PAGE.S3_LABS && <LabDetailsPage type="s3" />}
+          {currentPage === PAGE.LAMBDA_LABS && <LabDetailsPage type="lambda" />}
+          {currentPage === PAGE.EC2_LABS && <LabDetailsPage type="ec2" />}
+          {currentPage === PAGE.DYNAMODB_LABS && (
+            <LabDetailsPage type="dynamodb" />
           )}
+          {currentPage === PAGE.NETWORKING_LABS && (
+            <LabDetailsPage type="networking" />
+          )}
+          {currentPage === PAGE.RDS_LABS && <LabDetailsPage type="rds" />}
         </main>
 
         {showSessionExpiredModal && (
