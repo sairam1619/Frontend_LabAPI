@@ -1,4 +1,6 @@
 function Sidebar({ currentPage, setCurrentPage }) {
+  const [showLabs, setShowLabs] = React.useState(true);
+
   return (
     <aside className="sidebar">
       <div>
@@ -18,10 +20,10 @@ function Sidebar({ currentPage, setCurrentPage }) {
           </div>
         </div>
 
-        {/* LAUNCH */}
+        {/* NAVIGATION */}
 
         <div className="nav-group">
-          <div className="nav-label">PORTAL</div>
+          {/* Launch Lab */}
 
           <button
             className={
@@ -31,45 +33,59 @@ function Sidebar({ currentPage, setCurrentPage }) {
           >
             Launch Lab
           </button>
-        </div>
 
-        {/* LABS */}
+          {/* Labs */}
 
-        <div className="nav-group">
-          <div className="nav-label">LABS</div>
+          <button className="nav-parent" onClick={() => setShowLabs(!showLabs)}>
+            <span>Labs</span>
 
-          <button
-            className={
-              currentPage === "iam-labs" ? "nav-item active-nav" : "nav-item"
-            }
-            onClick={() => setCurrentPage("iam-labs")}
-          >
-            IAM Labs
+            <i
+              className={
+                showLabs
+                  ? "bi bi-chevron-up nav-arrow"
+                  : "bi bi-chevron-down nav-arrow"
+              }
+            ></i>
           </button>
 
-          <button className="nav-item" disabled>
-            S3 Labs
-          </button>
+          {showLabs && (
+            <div className="nav-dropdown">
+              <button
+                className={
+                  currentPage === "iam-labs"
+                    ? "nav-sub-item active-nav"
+                    : "nav-sub-item"
+                }
+                onClick={() => setCurrentPage("iam-labs")}
+              >
+                IAM Labs
+              </button>
 
-          <button className="nav-item" disabled>
-            Lambda Labs
-          </button>
+              <button className="nav-sub-item" disabled>
+                S3 Labs
+              </button>
 
-          <button className="nav-item" disabled>
-            EC2 Labs
-          </button>
+              <button className="nav-sub-item" disabled>
+                Lambda Labs
+              </button>
 
-          <button className="nav-item" disabled>
-            DynamoDB Labs
-          </button>
+              <button className="nav-sub-item" disabled>
+                EC2 Labs
+              </button>
 
-          <button className="nav-item" disabled>
-            Networking Labs
-          </button>
+              <button className="nav-sub-item" disabled>
+                DynamoDB Labs
+              </button>
 
-          <button className="nav-item" disabled>
-            RDS Labs
-          </button>
+              <button className="nav-sub-item" disabled>
+                Networking Labs
+              </button>
+
+              <button className="nav-sub-item" disabled>
+                RDS Labs
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
